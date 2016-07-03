@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack -p",
+    "gh-pages": "gh-pages -d demo",
     "test": "standard && ava test -v"
   },
   "keywords": [],

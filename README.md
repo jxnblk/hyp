@@ -16,7 +16,6 @@ import h from 'hyp'
 
 const Button = ({
   text,
-  onclick,
   ...props
 }) => {
   const cx = {
