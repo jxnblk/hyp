@@ -1,0 +1,35 @@
+{
+  "name": "hyp",
+  "version": "1.0.0-beta.1",
+  "description": "Functional UI component microlibrary with ES6 tagged template literals",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack -p",
+    "test": "ava test -v"
+  },
+  "keywords": [],
+  "author": "Brent Jackson",
+  "license": "MIT",
+  "dependencies": {
+    "bel": "^4.4.1",
+    "cxs": "^1.0.0-beta.6",
+    "hyperx": "^2.0.4"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "color": "^0.11.3",
+    "gh-pages": "^0.11.0",
+    "html-loader": "^0.4.3",
+    "jsdom": "^9.4.0",
+    "jsdom-global": "^2.0.0",
+    "json-loader": "^0.5.4",
+    "markdown-loader": "^0.1.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "yo-yo": "^1.2.2"
+  }
+}
