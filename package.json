@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack -p",
-    "test": "ava test -v"
+    "test": "standard && ava test -v"
   },
   "keywords": [],
   "author": "Brent Jackson",
@@ -28,6 +28,7 @@
     "jsdom-global": "^2.0.0",
     "json-loader": "^0.5.4",
     "markdown-loader": "^0.1.7",
+    "standard": "^7.1.2",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
     "yo-yo": "^1.2.2"

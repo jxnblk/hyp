@@ -2,6 +2,7 @@
 # hyp
 
 [![Build Status](https://travis-ci.org/jxnblk/hyp.svg?branch=master)](https://travis-ci.org/jxnblk/hyp)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 **WIP** Functional UI component microlibrary with ES6 tagged template literal
 

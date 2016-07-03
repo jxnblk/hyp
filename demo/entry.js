@@ -8,9 +8,9 @@ import pkg from '../package.json'
 const createStore = (reducer, listener = () => {}) => {
   let _ = reducer(undefined, {})
   return {
-    get state(){ return _ },
+    get state () { return _ },
     dispatch: (a) => {
-      _ = reducer(_,a)
+      _ = reducer(_, a)
       listener()
     }
   }
@@ -59,7 +59,7 @@ const reducer = (state = {
   }
 }
 
-const darken = (v, d) => Color(v).darken(d).rgbString()
+// const darken = (v, d) => Color(v).darken(d).rgbString()
 const alpha = (v, a) => Color(v).alpha(a).rgbString()
 
 const green = '#0fa'
@@ -71,7 +71,7 @@ const colors = [
   green,
   blue,
   purple,
-  orange,
+  orange
 ]
 
 const Button = ({ text, className, ...props }) => {
@@ -93,7 +93,7 @@ const Button = ({ text, className, ...props }) => {
     WebkitAppearance: 'none',
     ...className,
     ':hover': {
-      boxShadow: `inset 0 0 0 999px ${alpha('#000', 1/8)}`
+      boxShadow: `inset 0 0 0 999px ${alpha('#000', 1 / 8)}`
     }
   }
 
@@ -176,11 +176,11 @@ const App = ({ state, dispatch }) => {
       fontWeight: 500,
       margin: 0,
       '@media (min-width:52em)': {
-        fontSize: 96,
+        fontSize: 96
       }
     },
     link: {
-      color: 'inherit',
+      color: 'inherit'
     },
     buttons: {
       display: 'flex'

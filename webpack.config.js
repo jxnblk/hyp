@@ -1,8 +1,10 @@
 
+const path = require('path')
+
 const config = {
   entry: './demo/entry.js',
   output: {
-    path: __dirname + '/demo',
+    path: path.join(__dirname, 'demo'),
     filename: 'bundle.js'
   },
   module: {

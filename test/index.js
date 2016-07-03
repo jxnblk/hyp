@@ -19,14 +19,14 @@ test('adds cxs rule from object', t => {
   const cx = {
     color: 'tomato'
   }
-  const node = h`<div className=${cx}></div>`
+  h`<div className=${cx}></div>`
   t.is(typeof cxs.css, 'string')
   t.regex(cxs.css, /tomato/)
   t.truthy(cxs.css.length)
 })
 
 test('ignores string classNames', t => {
-  const node = h`<div className='hello'></div>`
+  h`<div className='hello'></div>`
   t.falsy(cxs.css.length)
 })
 
