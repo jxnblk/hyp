@@ -1,6 +1,8 @@
 
 # hyp
 
+[![Build Status](https://travis-ci.org/jxnblk/hyp.svg?branch=master)](https://travis-ci.org/jxnblk/hyp)
+
 **WIP** Functional UI component microlibrary with ES6 tagged template literal
 
 ```sh
