@@ -196,7 +196,9 @@ const App = ({ state, dispatch }) => {
   return h`
     <div className=${cx.root}>
       <header className=${cx.header}>
-        <h1 className=${cx.heading}>hyp ${count} ${color}</h1>
+        <h1 className=${cx.heading}>
+          hyp ${count} ${color}
+        </h1>
         <p>${pkg.description}</p>
         <a href='https://github.com/jxnblk/hyp'
           className=${cx.link}>
