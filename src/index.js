@@ -25,9 +25,14 @@ const styleToString = (style) => {
     .map(key => `${kebab(key)}:${parseValue(key, style[key])}`)
     .join(';')
 }
+
 const parseValue = (prop, val) => typeof val === 'number' ? addPx(prop, val) : val
 const kebab = (str) => str.replace(/([A-Z])/g, g => '-' + g.toLowerCase())
 
 module.exports = hyp
 module.exports.cxs = cxs
+module.exports.createElement = createEl
+module.exports.styleToString = styleToString
+module.exports.parseValue = parseValue
+module.exports.kebab = kebab
 

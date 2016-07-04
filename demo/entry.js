@@ -164,7 +164,7 @@ const App = ({ state, dispatch }) => {
     },
     header: {
       padding: 48,
-      color,
+      // color,
       backgroundColor: '#222',
       '@media (min-width:52em)': {
         padding: 96
@@ -188,14 +188,22 @@ const App = ({ state, dispatch }) => {
     button: {
       fontSize: 32,
       flex: '1 1 auto',
-      color: '#222',
+      color: '#222'
+    }
+  }
+
+  const sx = {
+    header: {
+      color
+    },
+    button: {
       backgroundColor: color
     }
   }
 
   return h`
     <div className=${cx.root}>
-      <header className=${cx.header}>
+      <header className=${cx.header} style=${sx.header}>
         <h1 className=${cx.heading}>
           hyp ${count} ${color}
         </h1>
@@ -209,11 +217,13 @@ const App = ({ state, dispatch }) => {
         ${Button({
           text: '-',
           className: cx.button,
+          style: sx.button,
           onclick: e => dispatch({ type: DECREMENT })
         })}
         ${Button({
           text: '+',
           className: cx.button,
+          style: sx.button,
           onclick: e => dispatch({ type: INCREMENT })
         })}
       </div>
