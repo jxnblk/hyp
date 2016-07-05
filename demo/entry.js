@@ -112,7 +112,21 @@ const Readme = () => {
     fontSize: 14,
     padding: 32,
     maxWidth: 640,
-    margin: 'auto'
+    margin: 'auto',
+    'h1': {
+      marginTop: 32,
+      marginBottom: 8,
+      fontWeight: 500
+    },
+    'h2': {
+      marginTop: 32,
+      marginBottom: 8,
+      fontWeight: 500
+    },
+    'p': {
+      marginTop: 0,
+      marginBottom: 32
+    }
   }
 
   return h`
@@ -127,6 +141,23 @@ const prettifyCss = (css) => {
     .replace(/;/g, ';\n  ')
     .replace(/{/g, ' {\n  ')
     .replace(/}/g, '}\n')
+}
+
+const HtmlExample = () => {
+  const buttonHtml = Button({ text: 'Hello' }).outerHTML
+  const cx = {
+    fontSize: 14,
+    padding: 32,
+    maxWidth: 640,
+    margin: 'auto'
+  }
+
+  return h`
+    <div className=${cx}>
+      <h3>Example HTML output</h3>
+      <pre>${buttonHtml}</pre>
+    </div>
+  `
 }
 
 const Css = () => {
@@ -144,7 +175,7 @@ const Css = () => {
 
   return h`
     <div className=${cx.root}>
-      <h3>Generated CSS</h3>
+      <h3>Generated CSS for this page</h3>
       <pre className=${cx.pre}>/* ${cxs.css.length} bytes */
 ${css}</pre>
     </div>
@@ -180,7 +211,10 @@ const App = ({ state, dispatch }) => {
       }
     },
     link: {
-      color: 'inherit'
+      color: 'inherit',
+      ':hover': {
+        color: 'white'
+      }
     },
     buttons: {
       display: 'flex'
@@ -228,6 +262,7 @@ const App = ({ state, dispatch }) => {
         })}
       </div>
       ${Readme()}
+      ${HtmlExample()}
       ${Css()}
     </div>
   `
