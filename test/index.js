@@ -39,11 +39,17 @@ test('ignores string classNames', t => {
   t.falsy(cxs.css.length)
 })
 
-test('attaches stylesheet', t => {
-  t.plan(2)
-  const style = document.getElementById('cxs')
-  t.truthy(style)
-  t.truthy(style.sheet.cssRules.length)
+test('attaches stylesheet', async t => {
+  t.plan(1)
+  const getTag = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const tag = document.getElementById('cxs-style')
+        resolve(tag)
+      }, 200)
+    })
+  }
+  t.truthy(await getTag())
 })
 
 test('converts style object to string', t => {
