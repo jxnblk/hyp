@@ -4,8 +4,6 @@ const hyperx = require('hyperx')
 const addPx = require('add-px-to-style')
 const cxs = require('cxs').default
 
-cxs.options.autoAttach = true
-
 const createEl = (tag, props, children) => {
   if (props.className && typeof props.className === 'object') {
     props.className = cxs(props.className)
