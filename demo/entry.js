@@ -239,7 +239,7 @@ const App = ({ state, dispatch }) => {
     <div className=${cx.root}>
       <header className=${cx.header} style=${sx.header}>
         <h1 className=${cx.heading}>
-          hyp ${count} ${color}
+          ϟ hyp ${count} ${color}
         </h1>
         <p>${pkg.description}</p>
         <a href='https://github.com/jxnblk/hyp'
