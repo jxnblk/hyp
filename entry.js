@@ -112,7 +112,21 @@ const Readme = () => {
     fontSize: 14,
     padding: 32,
     maxWidth: 640,
-    margin: 'auto'
+    margin: 'auto',
+    'h1': {
+      marginTop: 32,
+      marginBottom: 8,
+      fontWeight: 500
+    },
+    'h2': {
+      marginTop: 32,
+      marginBottom: 8,
+      fontWeight: 500
+    },
+    'p': {
+      marginTop: 0,
+      marginBottom: 32
+    }
   }
 
   return h`
@@ -127,6 +141,23 @@ const prettifyCss = (css) => {
     .replace(/;/g, ';\n  ')
     .replace(/{/g, ' {\n  ')
     .replace(/}/g, '}\n')
+}
+
+const HtmlExample = () => {
+  const buttonHtml = Button({ text: 'Hello' }).outerHTML
+  const cx = {
+    fontSize: 14,
+    padding: 32,
+    maxWidth: 640,
+    margin: 'auto'
+  }
+
+  return h`
+    <div className=${cx}>
+      <h3>Example HTML output</h3>
+      <pre>${buttonHtml}</pre>
+    </div>
+  `
 }
 
 const Css = () => {
@@ -144,7 +175,7 @@ const Css = () => {
 
   return h`
     <div className=${cx.root}>
-      <h3>Generated CSS</h3>
+      <h3>Generated CSS for this page</h3>
       <pre className=${cx.pre}>/* ${cxs.css.length} bytes */
 ${css}</pre>
     </div>
@@ -164,7 +195,7 @@ const App = ({ state, dispatch }) => {
     },
     header: {
       padding: 48,
-      color,
+      // color,
       backgroundColor: '#222',
       '@media (min-width:52em)': {
         padding: 96
@@ -180,7 +211,10 @@ const App = ({ state, dispatch }) => {
       }
     },
     link: {
-      color: 'inherit'
+      color: 'inherit',
+      ':hover': {
+        color: 'white'
+      }
     },
     buttons: {
       display: 'flex'
@@ -188,15 +222,25 @@ const App = ({ state, dispatch }) => {
     button: {
       fontSize: 32,
       flex: '1 1 auto',
-      color: '#222',
+      color: '#222'
+    }
+  }
+
+  const sx = {
+    header: {
+      color
+    },
+    button: {
       backgroundColor: color
     }
   }
 
   return h`
     <div className=${cx.root}>
-      <header className=${cx.header}>
-        <h1 className=${cx.heading}>hyp ${count} ${color}</h1>
+      <header className=${cx.header} style=${sx.header}>
+        <h1 className=${cx.heading}>
+          ϟ hyp ${count} ${color}
+        </h1>
         <p>${pkg.description}</p>
         <a href='https://github.com/jxnblk/hyp'
           className=${cx.link}>
@@ -207,15 +251,18 @@ const App = ({ state, dispatch }) => {
         ${Button({
           text: '-',
           className: cx.button,
+          style: sx.button,
           onclick: e => dispatch({ type: DECREMENT })
         })}
         ${Button({
           text: '+',
           className: cx.button,
+          style: sx.button,
           onclick: e => dispatch({ type: INCREMENT })
         })}
       </div>
       ${Readme()}
+      ${HtmlExample()}
       ${Css()}
     </div>
   `
