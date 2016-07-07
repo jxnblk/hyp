@@ -20,6 +20,7 @@ const hyp = hyperx(createEl)
 
 const styleToString = (style) => {
   return Object.keys(style)
+    .filter(key => style[key] !== null)
     .map(key => `${kebab(key)}:${parseValue(key, style[key])}`)
     .join(';')
 }
