@@ -15,7 +15,7 @@
   "dependencies": {
     "add-px-to-style": "^1.0.0",
     "bel": "^4.4.1",
-    "cxs": "^1.0.0-beta.8",
+    "cxs": "^1.0.0-beta.11",
     "hyperx": "^2.0.4"
   },
   "devDependencies": {
