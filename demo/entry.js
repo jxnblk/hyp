@@ -104,6 +104,38 @@ const Button = ({ text, className, ...props }) => {
   `
 }
 
+const TweetButton = ({ text, via = 'jxnblk' }) => {
+  const cx = {
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    height: 20,
+    'iframe': {
+      height: 20,
+      margin: 0
+    }
+  }
+
+  const root = h`
+    <div className=${cx}>
+      <a href='https://twitter.com/share'
+        class='twitter-share-button'
+        data-url='http://jxnblk.com/react-cxs/'
+        data-text=${text}
+        data-via=${via}>
+        Tweet
+      </a>
+    </div>
+  `
+
+  if (typeof twttr !== 'undefined') {
+    twttr.ready(() => {
+      twttr.widgets.load(root)
+    })
+  }
+
+  return root
+}
+
 const Readme = () => {
   const div = document.createElement('div')
   div.innerHTML = readme
@@ -210,10 +242,22 @@ const App = ({ state, dispatch }) => {
         fontSize: 96
       }
     },
+    ctas: {
+      display: 'flex',
+      alignItems: 'center'
+    },
     link: {
-      color: 'inherit',
+      fontSize: 14,
+      display: 'inline-block',
+      verticalAlign: 'middle',
+      padding: 4,
+      marginRight: 16,
+      borderRadius: 3,
+      color: '#222',
+      backgroundColor: 'var(--primary)',
+      textDecoration: 'none',
       ':hover': {
-        color: 'white'
+        backgroundColor: 'white'
       }
     },
     buttons: {
@@ -242,10 +286,15 @@ const App = ({ state, dispatch }) => {
           ϟ hyp ${count} ${color}
         </h1>
         <p>${pkg.description}</p>
-        <a href='https://github.com/jxnblk/hyp'
-          className=${cx.link}>
-          GitHub
-        </a>
+        <div className=${cx.ctas}>
+          <a href='https://github.com/jxnblk/hyp'
+            className=${cx.link}>
+            GitHub
+          </a>
+          ${TweetButton({
+            text: `Hyp: ${pkg.description}`
+          })}
+        </div>
       </header>
       <div className=${cx.buttons}>
         ${Button({
