@@ -1,12 +1,13 @@
 
 const { createElement } = require('bel')
+const classnames = require('classnames')
 const hyperx = require('hyperx')
 const addPx = require('add-px-to-style')
 const cxs = require('cxs').default
 
 const createEl = (tag, props, children) => {
-  if (props.className && typeof props.className === 'object') {
-    props.className = cxs(props.className)
+  if (props.css && typeof props.css === 'object') {
+    props.className = classnames(props.className, cxs(props.css))
   }
 
   if (props.style && typeof props.style === 'object') {

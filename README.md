@@ -36,7 +36,7 @@ const Button = ({
   }
 
   return h`
-    <button className=${cx} ${props}>
+    <button css=${cx} ${props}>
       ${text}
     </button>
   `
