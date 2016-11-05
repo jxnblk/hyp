@@ -1,6 +1,6 @@
 {
   "name": "hyp",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-beta.5",
   "description": "Functional UI component microlibrary with ES6 tagged template literals",
   "main": "src/index.js",
   "scripts": {
