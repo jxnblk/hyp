@@ -74,7 +74,7 @@ const colors = [
   orange
 ]
 
-const Button = ({ text, className, ...props }) => {
+const Button = ({ text, css, ...props }) => {
   const cx = {
     display: 'inline-block',
     fontFamily: 'inherit',
@@ -91,14 +91,14 @@ const Button = ({ text, className, ...props }) => {
     cursor: 'pointer',
     MozAppearance: 'none',
     WebkitAppearance: 'none',
-    ...className,
+    ...css,
     ':hover': {
       boxShadow: `inset 0 0 0 999px ${alpha('#000', 1 / 8)}`
     }
   }
 
   return h`
-    <button className=${cx} ${props}>
+    <button css=${cx} ${props}>
       ${text}
     </button>
   `
@@ -116,7 +116,7 @@ const TweetButton = ({ text, via = 'jxnblk' }) => {
   }
 
   const root = h`
-    <div className=${cx}>
+    <div css=${cx}>
       <a href='https://twitter.com/share'
         class='twitter-share-button'
         data-url='http://jxnblk.com/react-cxs/'
@@ -162,7 +162,7 @@ const Readme = () => {
   }
 
   return h`
-    <div className=${cx}>
+    <div css=${cx}>
       ${div}
     </div>
   `
@@ -185,7 +185,7 @@ const HtmlExample = () => {
   }
 
   return h`
-    <div className=${cx}>
+    <div css=${cx}>
       <h3>Example HTML output</h3>
       <pre>${buttonHtml}</pre>
     </div>
@@ -206,9 +206,9 @@ const Css = () => {
   }
 
   return h`
-    <div className=${cx.root}>
+    <div css=${cx.root}>
       <h3>Generated CSS for this page</h3>
-      <pre className=${cx.pre}>/* ${cxs.css.length} bytes */
+      <pre css=${cx.pre}>/* ${cxs.css.length} bytes */
 ${css}</pre>
     </div>
   `
@@ -280,15 +280,15 @@ const App = ({ state, dispatch }) => {
   }
 
   return h`
-    <div className=${cx.root}>
-      <header className=${cx.header} style=${sx.header}>
-        <h1 className=${cx.heading}>
+    <div css=${cx.root}>
+      <header css=${cx.header} style=${sx.header}>
+        <h1 css=${cx.heading}>
           ϟ hyp ${count} ${color}
         </h1>
         <p>${pkg.description}</p>
-        <div className=${cx.ctas}>
+        <div css=${cx.ctas}>
           <a href='https://github.com/jxnblk/hyp'
-            className=${cx.link}>
+            css=${cx.link}>
             GitHub
           </a>
           ${TweetButton({
@@ -296,16 +296,16 @@ const App = ({ state, dispatch }) => {
           })}
         </div>
       </header>
-      <div className=${cx.buttons}>
+      <div css=${cx.buttons}>
         ${Button({
           text: '-',
-          className: cx.button,
+          css: cx.button,
           style: sx.button,
           onclick: e => dispatch({ type: DECREMENT })
         })}
         ${Button({
           text: '+',
-          className: cx.button,
+          css: cx.button,
           style: sx.button,
           onclick: e => dispatch({ type: INCREMENT })
         })}

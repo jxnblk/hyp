@@ -12,7 +12,9 @@ import h, {
 jsdom('<html><html>')
 
 test.afterEach(() => {
-  cxs.clearCache()
+  cxs.clear()
+  cxs.sheet.flush()
+  cxs.sheet.inject()
 })
 
 test('returns a DOM node', t => {
@@ -27,7 +29,7 @@ test('adds cxs rule from object', t => {
   const cx = {
     color: 'tomato'
   }
-  const node = h`<div className=${cx}></div>`
+  const node = h`<div css=${cx}></div>`
   t.regex(node.toString(), /class="cxs/)
   t.is(typeof cxs.css, 'string')
   t.regex(cxs.css, /tomato/)
@@ -37,19 +39,6 @@ test('adds cxs rule from object', t => {
 test('ignores string classNames', t => {
   h`<div className='hello'></div>`
   t.falsy(cxs.css.length)
-})
-
-test('attaches stylesheet', async t => {
-  t.plan(1)
-  const getTag = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const tag = document.querySelector('style')
-        resolve(tag)
-      }, 200)
-    })
-  }
-  t.truthy(await getTag())
 })
 
 test('converts style object to string', t => {
