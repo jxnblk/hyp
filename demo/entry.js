@@ -168,15 +168,7 @@ const Readme = () => {
   `
 }
 
-const prettifyCss = (css) => {
-  return css
-    .replace(/;/g, ';\n  ')
-    .replace(/{/g, ' {\n  ')
-    .replace(/}/g, '}\n')
-}
-
-const HtmlExample = () => {
-  const buttonHtml = Button({ text: 'Hello' }).outerHTML
+const Example = ({ heading, code, ...props }) => {
   const cx = {
     fontSize: 14,
     padding: 32,
@@ -185,33 +177,33 @@ const HtmlExample = () => {
   }
 
   return h`
-    <div css=${cx}>
-      <h3>Example HTML output</h3>
-      <pre>${buttonHtml}</pre>
+    <div css=${cx} ${props}>
+      <h3>${heading}</h3>
+      <pre>${code}</pre>
     </div>
   `
 }
 
+const HtmlExample = () => {
+  const code = Button({ text: 'Hello' }).outerHTML
+    .replace(/\s{5}/g, '\n')
+
+  return Example({
+    heading: 'Example HTML output',
+    code
+  })
+}
+
 const Css = () => {
-  const css = prettifyCss(cxs.css)
+  const code = cxs.getCss()
+    .replace(/{/g, '{\n ')
+    .replace(/;/g, ';\n ')
+    .replace(/ +}/g, '}\n')
 
-  const cx = {
-    root: {
-      padding: 32,
-      maxWidth: 640,
-      margin: 'auto'
-    },
-    pre: {
-    }
-  }
-
-  return h`
-    <div css=${cx.root}>
-      <h3>Generated CSS for this page</h3>
-      <pre css=${cx.pre}>/* ${cxs.css.length} bytes */
-${css}</pre>
-    </div>
-  `
+  return Example({
+    heading: 'Generated CSS for this page',
+    code
+  })
 }
 
 const App = ({ state, dispatch }) => {
