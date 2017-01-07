@@ -195,10 +195,13 @@ const HtmlExample = () => {
 }
 
 const Css = () => {
-  const code = cxs.getCss()
+  const src = cxs.getCss()
+  let code = src
     .replace(/{/g, '{\n ')
     .replace(/;/g, ';\n ')
     .replace(/ +}/g, '}\n')
+  code = `/* ${src.replace(/\s{2,}/, '').length} bytes */
+code`
 
   return Example({
     heading: 'Generated CSS for this page',
