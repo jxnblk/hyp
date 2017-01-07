@@ -10,6 +10,7 @@ const createEl = (tag, props, children) => {
 
   if (css && typeof css === 'object') {
     props.className = classnames(cxs(css), className)
+    delete props.css
   }
 
   if (style && typeof style === 'object') {
