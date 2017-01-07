@@ -6,12 +6,14 @@ import addPx from 'add-px-to-style'
 import cxs from 'cxs'
 
 const createEl = (tag, props, children) => {
-  if (props.css && typeof props.css === 'object') {
-    props.className = classnames(props.className, cxs(props.css))
+  const { className, css, style } = props
+
+  if (css && typeof css === 'object') {
+    props.className = classnames(cxs(css), className)
   }
 
-  if (props.style && typeof props.style === 'object') {
-    props.style = styleToString(props.style)
+  if (style && typeof style === 'object') {
+    props.style = styleToString(style)
   }
 
   return createElement(tag, props, children)
