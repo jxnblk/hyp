@@ -193,7 +193,7 @@ const HtmlExample = () => {
 }
 
 const Css = () => {
-  const css = prettifyCss(cxs.css)
+  const css = prettifyCss(cxs.getCss())
 
   const cx = {
     root: {

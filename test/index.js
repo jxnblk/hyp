@@ -12,9 +12,7 @@ import h, {
 jsdom('<html><html>')
 
 test.afterEach(() => {
-  cxs.clear()
-  cxs.sheet.flush()
-  cxs.sheet.inject()
+  cxs.reset()
 })
 
 test('returns a DOM node', t => {
@@ -30,15 +28,16 @@ test('adds cxs rule from object', t => {
     color: 'tomato'
   }
   const node = h`<div css=${cx}></div>`
-  t.regex(node.toString(), /class="cxs/)
-  t.is(typeof cxs.css, 'string')
-  t.regex(cxs.css, /tomato/)
-  t.truthy(cxs.css.length)
+  t.regex(node.toString(), /class="c-tomato/)
+  const cxsCss = cxs.getCss()
+  t.is(typeof cxsCss, 'string')
+  t.regex(cxsCss, /tomato/)
+  t.truthy(cxsCss.length)
 })
 
 test('ignores string classNames', t => {
   h`<div className='hello'></div>`
-  t.falsy(cxs.css.length)
+  t.falsy(cxs.getCss().length)
 })
 
 test('converts style object to string', t => {
