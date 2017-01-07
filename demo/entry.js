@@ -59,8 +59,8 @@ const reducer = (state = {
   }
 }
 
-// const darken = (v, d) => Color(v).darken(d).rgbString()
-const alpha = (v, a) => Color(v).alpha(a).rgbString()
+// const darken = (v, d) => Color(v).darken(d).rgb().string()
+const alpha = (v, a) => Color(v).alpha(a).rgb().string()
 
 const green = '#0fa'
 const blue = '#0cf'
