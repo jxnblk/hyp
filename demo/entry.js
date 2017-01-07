@@ -201,7 +201,7 @@ const Css = () => {
     .replace(/;/g, ';\n ')
     .replace(/ +}/g, '}\n')
   code = `/* ${src.replace(/\s{2,}/, '').length} bytes */
-code`
+${code}`
 
   return Example({
     heading: 'Generated CSS for this page',
