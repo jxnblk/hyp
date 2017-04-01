@@ -320,4 +320,3 @@ const App = ({ state, dispatch }) => {
 const app = createApp(reducer, App)
 
 app.mount(document.body)
-

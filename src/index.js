@@ -38,4 +38,3 @@ module.exports.createElement = createEl
 module.exports.styleToString = styleToString
 module.exports.parseValue = parseValue
 module.exports.kebab = kebab
-

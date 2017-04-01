@@ -62,4 +62,3 @@ test('creates a DOM element', t => {
   const node = createElement('div', {})
   t.is(node.tagName, 'DIV')
 })
-
